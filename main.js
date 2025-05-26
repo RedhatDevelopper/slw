@@ -5825,6 +5825,27 @@ var sketchProc = function(processingInstance) {
              });
 
              this.page = "gameover";
+                 // Demander un nom et envoyer le score
+    const name = prompt("Entre ton prénom pour enregistrer ton score :");
+    if (name) {
+        fetch("http://localhost:3000/scores", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                name: name,
+                score: this.player.points
+            })
+        })
+        .then(res => {
+            if (res.ok) {
+                console.log("Score envoyé !");
+            } else {
+                console.error("Erreur d’envoi");
+            }
+        })
+        .catch(err => console.error("Erreur réseau :", err));
+    }
+
          };
          this.gameTime = function() {
              this.timer = ~~((millis() - this.timerStart) / 1000);
@@ -6132,24 +6153,33 @@ var sketchProc = function(processingInstance) {
              image(this.images.spiderGreen, 80, 50 + sin(this.rate * 2) * 20);
              image(this.images.spiderPurple, 520 - this.images.spiderPurple.width, 50 + cos(this.rate * 2) * 20);
 
-             pushStyle();
-                 var names = "", scores = "";
-                 for(var i = 0; i < this.highscores.length; i++) {
-                     names+= this.highscores[i].name + ":\n";
-                     scores+= "" + this.highscores[i].score + "\n";
-                 }
+                 // Charger les scores depuis le serveur
+    fetch("http://localhost:3000/scores")
+      .then(res => res.json())
+      .then(data => {
+        let names = "", scores = "";
+        for (let i = 0; i < data.length; i++) {
+          names += data[i].name + ":\n";
+          scores += data[i].score + "\n";
+        }
 
-                 fill(255, 150);
-                 textAlign(CENTER);
-                 textSize(18);
-                 text("Highest Team Score", 300, 160);
-                 textAlign(RIGHT);
-                 fill(255, 220);
-                 textSize(13);
-                 textLeading(27);
-                 text(names, 325, 195);
-                 text(scores, 365, 195);
-             popStyle();
+        pushStyle();
+        fill(255, 150);
+        textAlign(CENTER);
+        textSize(18);
+        text("Top Scores en ligne", 300, 160);
+        textAlign(RIGHT);
+        fill(255, 220);
+        textSize(13);
+        textLeading(27);
+        text(names, 325, 195);
+        text(scores, 365, 195);
+        popStyle();
+      })
+      .catch(err => {
+        console.error("Erreur chargement scores:", err);
+      });
+
 
              this.buttons.home.draw();
 
@@ -6380,6 +6410,7 @@ var sketchProc = function(processingInstance) {
              case "gameover":
                  game.gameover();
                  break;
+                 
          }
 
          clicked = false;
