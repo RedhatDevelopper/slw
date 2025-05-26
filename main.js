@@ -6154,7 +6154,7 @@ var sketchProc = function(processingInstance) {
              image(this.images.spiderPurple, 520 - this.images.spiderPurple.width, 50 + cos(this.rate * 2) * 20);
 
                  // Charger les scores depuis le serveur
-    fetch("http://localhost:3000/scores")
+    fetch("https://slw-backend.onrender.com/scores")
       .then(res => res.json())
       .then(data => {
         let names = "", scores = "";
