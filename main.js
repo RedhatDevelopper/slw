@@ -6097,7 +6097,7 @@ var sketchProc = function(processingInstance) {
                  textFont(this.fonts.body);
                  textSize(13);
                  fill(255, 220);
-                 text("This game is based off the Google Doodle \"Halloween 2018\".\n\nGhosts team up and compete to see who can collect the most wandering spirit flames before the moon is gone....but not without some unexpected twists along the way..\n\nUse the Arrow or WASD keys to move and collect the sprit flames.\n\nYou can steal spirit flames from the enemy, but beware that they can also steal yours.\n\nYou collect points for the spirit flames by getting them back to your base.\n\nNote that different spirit flames give you varying abilities.", 40, 160, 520, 600);
+                 text("Ce jeu est inspiré du Google Doodle \\\"Halloween 2018\\\".\n\nForme ton équipe de fantômes et affronte tes adversaires pour récolter le plus grand nombre de flammes d’âmes errantes avant que la lune ne disparaisse…\nMais attention : des rebondissements inattendus peuvent changer le cours de la partie !\n\nUtilise les touches fléchées ou WASD pour te déplacer.\nRamasse les flammes d’esprit et ramène-les à ta base pour marquer des points.\n\nTu peux voler les flammes de l’équipe ennemie, mais eux aussi peuvent voler les tiennes !\n\nChaque flamme peut te donner un pouvoir spécial. Découvre-les et utilise-les stratégiquement !", 40, 160, 520, 600);
              popStyle();
 
              this.buttons.home.draw();
