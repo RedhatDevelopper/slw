@@ -5828,7 +5828,7 @@ var sketchProc = function(processingInstance) {
                  // Demander un nom et envoyer le score
     const name = prompt("Entre ton prénom pour enregistrer ton score :");
     if (name) {
-        fetch("http://localhost:3000/scores", {
+        fetch("https://slw-vdj3.onrender.com/scores", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
