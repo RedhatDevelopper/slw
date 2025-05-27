@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Mon Site Shrek</title>
+  <style>
+    @font-face {
+      font-family: 'ShrekFont';
+      src: url('shrek.ttf') format('truetype');
+    }
+
+    body {
+      font-family: 'ShrekFont', sans-serif;
+      background-color: #e0ffe0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Bienvenue dans le Marais 🐸</h1>
+  <p>Ceci est le royaume de Shrek !</p>
+</body>
+</html>
